@@ -1,7 +1,7 @@
 from drafts_n_shit import *
 
 print(divisible_by_5_or_7(1000, 2000))
-print(divisible_by_5_or_7_single_line)
+print(divisible_by_5_or_7_single_line(1000,2000))
 print(count_letters_in_string("Writeafunctionhatreturnsthetalcountofachcharacterinastringndictionary"))
 sad_student = CSEStudent(grade=65.0, CSE_classes=5)
 print(sad_student.pass_fail())
