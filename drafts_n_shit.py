@@ -16,7 +16,7 @@ def divisible_by_5_or_7(a: int, b: int) -> str:
 
 
 def divisible_by_5_or_7_single_line(a: int, b: int) -> str:
-    ", ".join([str(_) for _ in range(1000, 2000 + 1) if _ % 5 == 0 or _ % 7 == 0])
+    return ", ".join([str(_) for _ in range(1000, 2000 + 1) if _ % 5 == 0 or _ % 7 == 0])
 
 
 def count_letters_in_string(s: str) -> dict:
