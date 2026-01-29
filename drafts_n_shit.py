@@ -126,3 +126,9 @@ def simple_cache(func):
         return cache[key]
 
     return wrapper
+
+def binary_search(l: List):
+    low = 0
+    high = len(l) - 1
+    while low <= high:
+        mid = (high + low)//2
