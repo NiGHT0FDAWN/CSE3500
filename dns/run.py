@@ -24,3 +24,15 @@ r.shuffle(a)
 r.shuffle(b)
 print(pair_of_least_difference_naive(a, b))
 print(pair_of_least_difference(a, b))
+
+node0 = Node(0)
+node1 = Node(1)
+node2 = Node(2)
+node0.next = node1
+node1.next = node2
+head = node0
+
+current = head
+while current is not None:
+    print(current.val)
+    current = current.next

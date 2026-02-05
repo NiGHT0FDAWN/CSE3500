@@ -177,3 +177,13 @@ def pair_of_least_difference(arr1, arr2):
             else:
                 return pair
         return pair
+
+class Node:
+    def __init__(self, val, next=None, last=None):
+        self.val = val
+        self.next = next
+        self.last = last
+
+class LinkedList:
+    def __init__(self, head: Node):
+        self.head = head
