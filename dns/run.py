@@ -34,5 +34,5 @@ head = node0
 
 current = head
 while current is not None:
-    print(current.val)
+    print(current)
     current = current.next

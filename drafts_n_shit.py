@@ -184,6 +184,35 @@ class Node:
         self.next = next
         self.last = last
 
-class LinkedList:
-    def __init__(self, head: Node):
+    def __repr__(self) -> str:
+        return f"{self.val}"
+
+class DoubleLinkedList:
+    def __init__(self, head: Node = None, tail: Node = None):
         self.head = head
+        self.tail = tail
+
+    def is_empty(self):
+        if self.head is None:
+            return True
+
+    def append(self, x):
+        if self.is_empty():
+            self.head = Node(x)
+            self.tail = self.head
+        past = self.tail
+        past.next = self.tail = Node(x)
+        self.tail.last = past
+
+    def insert(self,x,i):
+        if self.is_empty():
+            return "Failed, LinkedList is empty, use append()"
+        current = self.head
+        for _ in range(i):
+            current = current.next
+        if current is None:
+            return "Failed, Index out of range"
+        past = current
+        current = past.next.next.last = past.next = Node(x)
+        current.next = past.next.next
+
