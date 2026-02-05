@@ -118,7 +118,7 @@ class Deck:
 def simple_cache(func):
     cache = {}
 
-    @ft.wraps(func)  # not necessary for credit
+    @ft.wraps(func)
     def wrapper(*args, **kwargs):
         key = (args, tuple(sorted(kwargs.items())))
         if key not in cache:
@@ -140,3 +140,40 @@ def binary_search(l: list, target: int):
         elif l[mid] > target:
             high = mid
     return -1
+
+
+def pair_of_least_difference_naive(arr1, arr2):
+    ti = t.time()
+    smallest = float("inf")
+    pair = []
+    for x in arr1:
+        for y in arr2:
+            diff = abs(x - y)
+            if diff < smallest:
+                smallest = diff
+                pair = [x, y]
+    return pair
+
+def pair_of_least_difference(arr1, arr2):
+    ti = t.time()
+    arr1.sort()
+    arr2.sort()
+    i = 0
+    j = 0
+    smallest = float("inf")
+    pair = []
+
+    while i < len(arr1) and j < len(arr2):
+        first = arr1[i]
+        second = arr2[j]
+        diff = abs(first - second)
+        if diff < smallest:
+            smallest = diff
+            pair = [first, second]
+            if first < second:
+                i += 1
+            elif first > second:
+                j += 1
+            else:
+                return pair
+        return pair

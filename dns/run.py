@@ -18,4 +18,9 @@ print(len(d))
 for _ in d:
     print(_)
 print(binary_search([1, 2, 3, 4, 6, 7, 8, 11, 32, 36, 44, 45, 45, 48, 54, 56, 152, 235, 437, 958, 2312, 2346, 3265, 5876, 7264, 35243, 45568], 35243))
-
+a = [-100, -11, -5, 0, 9, 16, 31]
+b = [-76, -28, -3, 1, 12, 35, 42]
+r.shuffle(a)
+r.shuffle(b)
+print(pair_of_least_difference_naive(a, b))
+print(pair_of_least_difference(a, b))
