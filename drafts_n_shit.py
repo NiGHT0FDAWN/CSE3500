@@ -204,7 +204,7 @@ class DoubleLinkedList:
         past.next = self.tail = Node(x)
         self.tail.last = past
 
-    def insert(self,x,i):
+    def insert(self, x, i):
         if self.is_empty():
             return "Failed, LinkedList is empty, use append()"
         current = self.head
