@@ -118,7 +118,7 @@ class Deck:
 def simple_cache(func):
     cache = {}
 
-    @ft.wraps(func)  # not necessary for credit
+    @ft.wraps(func)
     def wrapper(*args, **kwargs):
         key = (args, tuple(sorted(kwargs.items())))
         if key not in cache:
@@ -126,3 +126,93 @@ def simple_cache(func):
         return cache[key]
 
     return wrapper
+
+
+def binary_search(l: list, target: int):
+    low = 0
+    high = len(l) - 1
+    while low <= high:
+        mid = (high + low) // 2
+        if l[mid] == target:
+            return mid
+        elif l[mid] < target:
+            low = mid
+        elif l[mid] > target:
+            high = mid
+    return -1
+
+
+def pair_of_least_difference_naive(arr1, arr2):
+    ti = t.time()
+    smallest = float("inf")
+    pair = []
+    for x in arr1:
+        for y in arr2:
+            diff = abs(x - y)
+            if diff < smallest:
+                smallest = diff
+                pair = [x, y]
+    return pair
+
+def pair_of_least_difference(arr1, arr2):
+    ti = t.time()
+    arr1.sort()
+    arr2.sort()
+    i = 0
+    j = 0
+    smallest = float("inf")
+    pair = []
+
+    while i < len(arr1) and j < len(arr2):
+        first = arr1[i]
+        second = arr2[j]
+        diff = abs(first - second)
+        if diff < smallest:
+            smallest = diff
+            pair = [first, second]
+            if first < second:
+                i += 1
+            elif first > second:
+                j += 1
+            else:
+                return pair
+        return pair
+
+class Node:
+    def __init__(self, val, next=None, last=None):
+        self.val = val
+        self.next = next
+        self.last = last
+
+    def __repr__(self) -> str:
+        return f"{self.val}"
+
+class DoubleLinkedList:
+    def __init__(self, head: Node = None, tail: Node = None):
+        self.head = head
+        self.tail = tail
+
+    def is_empty(self):
+        if self.head is None:
+            return True
+
+    def append(self, x):
+        if self.is_empty():
+            self.head = Node(x)
+            self.tail = self.head
+        past = self.tail
+        past.next = self.tail = Node(x)
+        self.tail.last = past
+
+    def insert(self, x, i):
+        if self.is_empty():
+            return "Failed, LinkedList is empty, use append()"
+        current = self.head
+        for _ in range(i):
+            current = current.next
+        if current is None:
+            return "Failed, Index out of range"
+        past = current
+        current = past.next.next.last = past.next = Node(x)
+        current.next = past.next.next
+
