@@ -1,5 +1,6 @@
 class Solution:
     def myAtoi(self, s: str) -> int:
+        #O(n) O(n)
         s = s.strip()
         if len(s) == 0:
             return 0
